@@ -68,6 +68,18 @@ if [ "${da_users}" = "" ]; then
     exit
 fi
 
+# validate if user exists on source server, else quit
+for user in ${da_users}
+do
+    ssh root@${source} "getent passwd ${user}" > /dev/null 2>&1
+    if [ $(ssh root@${source} "getent passwd ${user}") ]; then
+        echo "" > /dev/null 2>&1
+    else
+        echo -e "\n[ ${error} ] ${user} does not exist.\n"
+        exit
+    fi
+done
+
 # check if remote mysql connection can be established, else quit
 if ! ssh root@${source} "/usr/local/mysql/bin/mysql --user=${remote_sql_user} --password=${remote_sql_password} -e 'show databases;'" > /dev/null 2>&1
 then
