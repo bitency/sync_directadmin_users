@@ -208,7 +208,7 @@ do
         if [ "${user}" = "" ]; then
             echo -e "[ ${warning} ] no user(s) entered. Skip syncing homedir."
         else
-            /usr/bin/rsync -a -p root@${source}:/home/${user}/ /home/${user}/
+            /usr/bin/rsync -a -p root@${source}:/home/${user}/ /home/${user}/ --delete
         fi
     fi
 
