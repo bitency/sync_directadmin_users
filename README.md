@@ -4,7 +4,7 @@
 
 - The destination server must have SSH access (port 22) to the source server.
 - The destination must have passwordless (SSH key) `root` access to the source server.
-- Script must run from the destination server as `root`.
+- Script must run from the destination server as `root`. (pull method)
 
 ### Notes
 
