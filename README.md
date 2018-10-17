@@ -17,5 +17,12 @@
 
 ### Options
 
+- Cronjobs are `disabled` by default. This will prevent duplicate cronjobs during testing period. You can enable cronjobs by changing `disable_crons` from `true` to `false`.
+- DirectAdmin user backups are `enabled` by default. This backup does not contain e-mail data, website data and mysql data. You can disable DirectAdmin backups by changing `directadmin_backups` from `true` to `false`.
+- File backups are `enabled` by default. This will rsync the users home directory. You can disable file sync by changing `file_backups` from `true` to `false`.
+- Database backups are `enabled` by default. This will export the MySQL from the source server and import on the destination server. You can disable database backups by changing `database_backups` from `true` to `false`.
+
+### Sync just one, or multiple users manually
+
 - If you want to sync just one user, then comment out `da_users="${get_da_resellers}${get_da_users}"` and add `da_users="username"`.
 - If you want to sync multiple users manually, comment out `da_users="${get_da_resellers}${get_da_users}"` and add `da_users="user1 user2 user3 user4"`.
