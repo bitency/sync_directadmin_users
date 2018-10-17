@@ -17,5 +17,5 @@
 
 ### Options
 
-- If you want to sync just one user, then comment out `da_users="${get_da_resellers}${get_da_users}"` and add `da_users="username".
-- If you want to sync multiple users manually, comment out `da_users="${get_da_resellers}${get_da_users}"` and add `da_users="user1 user2 user3 user4".
+- If you want to sync just one user, then comment out `da_users="${get_da_resellers}${get_da_users}"` and add `da_users="username"`.
+- If you want to sync multiple users manually, comment out `da_users="${get_da_resellers}${get_da_users}"` and add `da_users="user1 user2 user3 user4"`.
