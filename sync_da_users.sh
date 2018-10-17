@@ -3,6 +3,7 @@
 # Date: October 17, 2018
 
 source="" # source server
+ssh_timeout="5" # timeout in seconds
 
 disable_crons="true"
 directadmin_backups="true"
@@ -24,12 +25,12 @@ fi
 
 # check if the source variable is not empty
 if [ "${source}" = "" ]; then
-    echo -e "\n[ ${error} ] The source server is not entered.\n"
+    echo -e "\n[ ${error} ] No source server. The variable is empty.\n"
     exit
 fi
 
 # check if ssh connection can be established
-if ! ssh -o ConnectTimeout=5 root@${source} "exit" > /dev/null 2>&1
+if ! ssh -o ConnectTimeout=${ssh_timeout} root@${source} "exit" > /dev/null 2>&1
 then
     echo -e "\n[ ${error} ] SSH connection to \e[92m${source}\e[39m can't be established.\n"
     exit
@@ -83,20 +84,20 @@ done
 # check if remote mysql connection can be established, else quit
 if ! ssh root@${source} "/usr/local/mysql/bin/mysql --user=${remote_sql_user} --password=${remote_sql_password} -e 'show databases;'" > /dev/null 2>&1
 then
-    echo -e "\n[ ${error} ] MySQL can't establish connection \e[92m${source}\e[39m.\n"
+    echo -e "\n[ ${error} ] Can't establish MySQL connection on \e[92m${source}\e[39m.\n"
     exit
 fi
 
 # check if local mysql connection can be establised, else quit
 if ! /usr/local/mysql/bin/mysql --user=${local_sql_user} --password=${local_sql_password} -e 'show databases;' > /dev/null 2>&1
 then
-    echo -e "\n[ ${error} ] Local MySQL connection can't be established.\n"
+    echo -e "\n[ ${error} ] Can't establish MySQL on \e[92mlocalhost\e[39m.\n"
     exit
 fi
 
 # check if main ipaddress of local server can be acquired, else quit
 if [ "${local_ipaddress}" = "" ]; then
-    echo -e "\n[ ${error} ] Can't determine this servers ipaddress. Please enter local_ipaddress manually."
+    echo -e "\n[ ${error} ] Can't determine this servers ipaddress. Please enter \e[92mlocal_ipaddress\e[39m manually."
     exit
 fi
 
