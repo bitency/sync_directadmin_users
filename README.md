@@ -26,3 +26,20 @@
 
 - If you want to sync just one user, then comment out `da_users="${get_da_resellers}${get_da_users}"` and add `da_users="username"` directly underneath the old da_users entry. Do not place it elsewhere in the script!
 - If you want to sync multiple users manually, comment out `da_users="${get_da_resellers}${get_da_users}"` and add `da_users="user1 user2 user3 user4"` directly underneath the old da_users entry. Do not place it elsewhere in the script!
+
+### Information
+
+```
+# This script will:
+# - Check if it is run by root
+# - Check if source server is filled, else quit
+# - Check if SSH connection can be established, else quit
+# - Check if da_users is filled, else quit
+# - Export DirectAdmin resellers / users on remote server (resellers are done first!)
+# - Import DirectAdmin users on local server with main ipaddress local server (resellers are done first!)
+# - Option to enable or disable cronjobs after sync
+# - Sync users home directory from remote server to local server (sync only works if local directory exists)
+# - Dump databases directly from remote server on local server
+# If you want to migrate/sync just one user, then set da_users manually. You can sync/migrate multiple
+# users by entering them seperated by space. Example: user1 user2 user3
+```
