@@ -22,7 +22,7 @@ if [ "${myuid}" != 0 ]; then
     exit 0;
 fi
 
-# check if the source variable is filled
+# check if the source variable is not empty
 if [ "${source}" = "" ]; then
     echo -e "\n[ ${error} ] The source server is not entered.\n"
     exit
