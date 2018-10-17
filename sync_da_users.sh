@@ -166,6 +166,9 @@ do
     # create directadmin backup on remote server
     if [ "${directadmin_backups}" = true ] ; then
         echo -e "[ DirectAdmin ]\n"
+        # fix user permissions on remote server before creating a backup
+        ssh root@${source} "/usr/local/directadmin/scripts/fix_da_user.sh ${user} ${usertype}"
+        # create backup on remote server
         ssh root@${source} "echo 'action=backup&append%5Fto%5Fpath=nothing&database%5Fdata%5Faware=yes&email%5Fdata%5Faware=yes&local%5Fpath=%2Fhome%2Fadmin%2Fadmin%5Fbackups&owner=admin&select%30=${user}&type=admin&value=multiple&when=now&where=local' >> /usr/local/directadmin/data/task.queue"
     fi
 
