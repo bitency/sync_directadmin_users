@@ -129,7 +129,8 @@ else
 fi
 
 # confirm sync from source to destination before continue
-echo -e "\nThis will sync the following resellers / users: \e[92m${da_users}\e[39m from \e[33m${source_host}\e[39m -> \e[92m${hostname}\e[39m.\n"
+echo -e "\nThis will sync the following resellers and/or users: \e[92m${da_users}\e[39m from \e[33m${source_host}\e[39m -> \e[92m${hostname}\e[39m.\n"
+echo -e "The ipaddress used to restore the resellers and/or users is: \e[92m${local_ipaddress}\e[39m"
 read -p "Are you sure you want to continue (y/n)? " choice
 case "${choice}" in
     y|Y ) echo "";;
