@@ -47,6 +47,15 @@ then
     exit
 fi
 
+# check if directadmin_backups are set to true when disable_crons is set to true
+if [ ${disable_crons} == "true" ]; then
+    if [ ${directadmin_backups} == "true" ]; then
+    echo "" > /dev/null 2>&1
+    else
+    echo -e "\n[ ${error} ] Script requires '\e[92mdirectadmin_backups\e[39m' to be set to '\e[92mtrue\e[39m' when '\e[92mdisable_crons\e[39m' is set to '\e[92mtrue\e[39m'.\n"
+    fi
+fi
+
 # keep the variables below untouched
 source_host=`ssh root@${source} "hostname"` # get hostname remote server
 hostname=`hostname` # get hostname local server
