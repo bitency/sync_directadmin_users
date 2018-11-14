@@ -11,7 +11,7 @@
 - Script uses `/home/` as the root directory for the users homedirs.
 - Script uses `/usr/local/mysql/bin/` as the installed location for MySQL.
 - Script does first migrate `resellers` and then `users`.
-- Script does `not` migrate the `admin` user
+- Script does **not** migrate the `admin` user
 - Script will import the users using the destination servers main ipaddress. (Not the sources ipaddress from the backup)
 
 ### Options
