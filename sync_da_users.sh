@@ -12,7 +12,7 @@ SOURCE=""
 IMPORT_USERS="true"
 MULTIPLE_PHP="false"
 IMPORT_CRONS="false"
-SYNC_HOMEDIRS="false"
+SYNC_HOMEDIR="false"
 SYNC_DATABASES="false"
 
 # optional: fix permissions on source server before exporting/importing user
@@ -227,7 +227,7 @@ else
 fi
 
 # tell user if sync homedir is enabled or disabled
-if [[ "${SYNC_HOMEDIRS}" == "true" ]]; then
+if [[ "${SYNC_HOMEDIR}" == "true" ]]; then
     echo -e "[ ${GREEN}true${RESET}  ] Sync homedir"
 else
     echo -e "[ ${YELLOW}false${RESET} ] Sync homedir"
@@ -361,7 +361,7 @@ do
     fi
 
     # sync user files (only when user's home and domains directory exists)
-    if [[ "${SYNC_HOMEDIRS}" == "true" ]]; then
+    if [[ "${SYNC_HOMEDIR}" == "true" ]]; then
         echo -e "\n[ ${YELLOW}Homedir${RESET} ] sync [ ${YELLOW}/home/${USER}/${RESET} ]\n"
         while [[ ! -d /home/"${USER}"/domains ]];
         do
