@@ -1,7 +1,7 @@
 #!/bin/bash
 # DirectAdmin user migration script
 # Author: Unixxio / https://github.com/unixxio
-# Date: October 18, 2018
+# Date: November 14, 2018
 
 BEGIN_SCRIPT_TIME="$(date +"%s")"
 
